@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+  <name>sr_blockly_blocks</name>
+  <version>0.1.0</version>
+  <description>A repository of blockly blocks</description>
+
+  <maintainer email="software@shadowrobot.com">Shadow Robot's software team</maintainer>
+
+  <license>GPLv3</license>
+
+  <author email="kirsty@shadowrobot.com">Kirsty Ellis</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- You can specify that this package is a metapackage here: -->
+    <!-- <metapackage/> -->
+
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
