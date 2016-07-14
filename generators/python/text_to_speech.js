@@ -3,7 +3,7 @@ Blockly.Python['text_to_speech'] = function(block) {
 
   var code = "text_command = '" + text_command + "'\n" ;
 
-  code += Blockly.readPythonFile("scripts/text_to_speech.py");
+  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/text_to_speech.py");
 
   return code;
 };
