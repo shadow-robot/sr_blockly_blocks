@@ -6,7 +6,7 @@ Blockly.Python['initialise'] = function(block) {
   code += "dropdown_commander = '" + dropdown_commander.toString() + "'" + "\n";
   code += "side = '" + dropdown_side.toString() + "'" + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/initialise.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/initialise.py");
 
   return code;
 };
@@ -19,7 +19,7 @@ Blockly.Python['teach_mode'] = function(block) {
   code += "hand_arm_select = '" + dropdown_hand_arm_select.toString() + "'" + "\n";
   code += "checkbox_on_off = '" + checkbox_on_off.toString() + "'" + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/teach_mode.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/teach_mode.py");
   code += "\n";
 
   return code;

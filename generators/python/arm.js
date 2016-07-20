@@ -8,7 +8,7 @@ Blockly.Python['arm'] = function(block) {
   code += "dropdown_axis = \"" + dropdown_axis.toString() + "\"\n";
   code += "text_displacement = " + text_displacement.toString() + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/arm.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/arm.py");
 
   return code;
 };
@@ -23,7 +23,7 @@ Blockly.Python['arm_named_pose'] = function(block) {
   code += "time = " + text_time.toString() + "\n";
   code += "pause = " + text_pause.toString() + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/arm_named_pose.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/arm_named_pose.py");
 
   return code;
 };
@@ -40,7 +40,7 @@ Blockly.Python['pose'] = function(block) {
   code += "y_displacement = " + text_y.toString() + "\n";
   code += "z_displacement = " + text_z.toString() + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/pose.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/pose.py");
 
   return code;
 };
@@ -59,7 +59,7 @@ Blockly.Python['arm_joint_target'] = function(block) {
   code += "wait = " + dropdown_wait.toString() + "\n";
   code += "angle = " + dropdown_angle.toString() + "\n";
 
-  code += Blockly.readPythonFile("/sr_blockly_blocks/generators/python/scripts/arm_joint_target.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/arm_joint_target.py");
 
   return code;
 };
