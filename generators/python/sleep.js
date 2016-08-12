@@ -4,8 +4,7 @@ Blockly.Python['sleep'] = function(block) {
   var code = "";
 
   code += "sleep = " + text_sleep + "\n";
-
-  code += rospy.sleep(sleep)
+  code += "rospy.sleep(sleep)\n";
 
   return code;
 };
