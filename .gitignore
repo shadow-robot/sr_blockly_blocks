@@ -37,5 +37,5 @@
 CMakeLists.txt.user
 
 # Temporary files
-/blocks_uncompressed.js.in
-/blocks_uncompressed.js
+blocks_uncompressed.js.in
+blocks_uncompressed.js
