@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(sr_blockly_blocks)
 
-find_package(catkin REQUIRED COMPONENTS rospy std_msgs message_generation)
+find_package(catkin REQUIRED COMPONENTS rospy std_msgs message_generation sr_blocks_common)
 
 catkin_package(
 #  INCLUDE_DIRS include
@@ -10,28 +10,6 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
-function(cat IN_FILE OUT_FILE)
-  file(READ ${IN_FILE} CONTENTS)
-  file(APPEND ${OUT_FILE} "${CONTENTS}")
-endfunction()
+generate_blockly_js()
 
-SET(BLOCKS_UNCOMPRESSED_JS_FILE "blocks_uncompressed.js")
-SET(TEMP_BLOCKS_UNCOMPRESSED_JS_FILE "blocks_uncompressed.js.in")
-
-FILE(GLOB_RECURSE PACKAGE_JS_FILES *.js)
-
-FILE(WRITE ${TEMP_BLOCKS_UNCOMPRESSED_JS_FILE}  "")
-
-foreach(PACKAGE_JS_FILE ${PACKAGE_JS_FILES})
-  if(NOT (${PACKAGE_JS_FILE} MATCHES "${BLOCKS_UNCOMPRESSED_JS_FILE}$"))
-    stamp(${PACKAGE_JS_FILE})
-    cat(${PACKAGE_JS_FILE} ${TEMP_BLOCKS_UNCOMPRESSED_JS_FILE})
-  endif()
-endforeach()
-
-configure_file(${TEMP_BLOCKS_UNCOMPRESSED_JS_FILE} ${CMAKE_CURRENT_SOURCE_DIR}/${BLOCKS_UNCOMPRESSED_JS_FILE} COPYONLY)
-
-install(FILES
-  ${BLOCKS_UNCOMPRESSED_JS_FILE}
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+install(FILES ${BLOCKS_UNCOMPRESSED_JS_FILE} DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})

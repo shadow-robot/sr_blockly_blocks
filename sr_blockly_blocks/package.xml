@@ -11,6 +11,7 @@
   <author email="kirsty@shadowrobot.com">Kirsty Ellis</author>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend>sr_blocks_common</buildtool_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
