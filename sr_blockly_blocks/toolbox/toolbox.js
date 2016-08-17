@@ -18,6 +18,7 @@ toolboxXmlText += `
           <block type="arm_joint_target"></block>
         </category>
         <category name="Trajectory">
+          <block type="trajectory_named_waypoint"></block>
           <block type="execute"></block>
         </category>
         <category name="Voice Recognition">
