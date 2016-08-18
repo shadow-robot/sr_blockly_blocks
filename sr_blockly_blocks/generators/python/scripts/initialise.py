@@ -8,7 +8,7 @@ if dropdown_commander == 'arm_commander':
 elif dropdown_commander == 'hand_commander':
     hand_commander = SrHandCommander(name=side + "_hand")
 elif dropdown_commander == 'robot_commander':
-    robot_commander = SrRobotCommander() # TODO Check name how is it passing in another projects
+    robot_commander = SrRobotCommander(name=side + "_arm_and_hand")
 else:
     arm_commander = SrArmCommander(set_ground=False)
     hand_commander = SrHandCommander(name=side + "_hand")
