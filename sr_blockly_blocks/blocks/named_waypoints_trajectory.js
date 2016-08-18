@@ -123,7 +123,7 @@ Blockly.Blocks['trajectory_execute_named_waypoint'] = {
 
 Blockly.Blocks['trajectory_execute_named_waypoint_container'] = {
   /**
-   * Mutator block for list container.
+   * Mutator block for trajectory execution container.
    * @this Blockly.Block
    */
   init: function() {
