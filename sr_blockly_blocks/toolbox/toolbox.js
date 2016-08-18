@@ -20,7 +20,6 @@ toolboxXmlText += `
         <category name="Trajectory">
           <block type="trajectory_named_waypoint"></block>
           <block type="trajectory_execute_named_waypoint"></block>
-          <block type="execute"></block>
         </category>
         <category name="Voice Recognition">
           <block type="text_to_speech"></block>
