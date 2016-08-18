@@ -23,6 +23,6 @@ Blockly.Python['trajectory_execute_named_waypoint'] = function(block) {
   }
   list += ']';
 
-  var code = 'robot_commander.run_named_trajectory(' + list + ')';
+  var code = 'robot_commander.run_named_trajectory(' + list + ')\n';
   return code;
 };
