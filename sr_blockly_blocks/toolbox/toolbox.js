@@ -2,7 +2,7 @@ if (null == toolboxXmlText) {
     var toolboxXmlText = "";
 }
 toolboxXmlText += `
-    <category id="shadow" name="Shadow Robot" colour="306">
+    <category id="shadow" name="Shadow Robot" colour="120">
         <category name="Commander">
           <block type="initialise"></block>
           <block type="teach_mode"></block>
@@ -18,7 +18,8 @@ toolboxXmlText += `
           <block type="arm_joint_target"></block>
         </category>
         <category name="Trajectory">
-          <block type="execute"></block>
+          <block type="trajectory_named_waypoint"></block>
+          <block type="trajectory_execute_named_waypoint"></block>
         </category>
         <category name="Voice Recognition">
           <block type="text_to_speech"></block>
