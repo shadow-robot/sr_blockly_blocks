@@ -16,6 +16,6 @@ Blockly.Python['launch_warehouse'] = function(block) {
 
   code += "import os\n";
   code += "os.system('roslaunch sr_moveit_hand_config default_warehouse_db.launch')";
-
+  code += "\n";
   return code;
 };
