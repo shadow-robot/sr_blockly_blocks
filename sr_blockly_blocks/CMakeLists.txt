@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(sr_blockly_blocks)
 
-find_package(catkin REQUIRED COMPONENTS rospy std_msgs message_generation sr_blocks_common)
+find_package(catkin REQUIRED COMPONENTS rospy std_msgs message_generation sr_blocks_common moveit_msgs sensor_msgs)
 
 catkin_python_setup()
 
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ${PROJECT_NAME}
-#  CATKIN_DEPENDS moveit_core moveit_msgs moveit_ros_planning roscpp
+#  CATKIN_DEPENDS moveit_core moveit_ros_planning sr_blocks_common moveit_msgs sensor_msgs
 #  DEPENDS system_lib
 )
 
