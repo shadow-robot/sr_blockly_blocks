@@ -26,7 +26,7 @@ function createTrajectoryNamedWaypoint(data) {
   };
 }
 
-Blockly.waitForComponentToLoad('sr_blockly_blocks', 'get_named_poses', ['right_hand', 'left_hand'],
+Blockly.waitForComponentToLoad('sr_blockly_blocks', 'get_named_poses', ['ur10srh', 'shadowhand_motor'],
   function (response) {
     createTrajectoryNamedWaypoint(response);
   },
