@@ -1,7 +1,4 @@
-if (null == toolboxXmlText) {
-    var toolboxXmlText = "";
-}
-toolboxXmlText += `
+Blockly.appendToToolbox(`
     <category id="shadow" name="Shadow Robot" colour="120">
         <category name="Commander">
           <block type="initialise"></block>
@@ -33,4 +30,4 @@ toolboxXmlText += `
           <block type="launch_warehouse"></block>
         </category>
     </category>
-`;
+`);
