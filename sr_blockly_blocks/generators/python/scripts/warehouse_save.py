@@ -15,4 +15,3 @@ if "__main__" == __name__:
         which = 'hand'
 
     gs = SrStateSaverUnsafe(pose_name, which)
-    gs.spin()
