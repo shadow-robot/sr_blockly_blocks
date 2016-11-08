@@ -12,7 +12,7 @@ class WebServiceModule(object):
             for robot_name in parameters:
                 response = list_states('', robot_name)
                 for state in response.states:
-                    result.append([state])
+                    result.append(state)
         except (rospy.ServiceException, rospy.ROSException):
             pass
         return result
