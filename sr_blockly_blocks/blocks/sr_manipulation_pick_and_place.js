@@ -15,7 +15,7 @@ Blockly.Blocks['sr_manipulation_place'] = {
     this.appendDummyInput()
         .appendField("Place Object");
     this.appendDummyInput()
-        .appendField("Place Location");
+        .appendField("Place Location")
         .appendField(new Blockly.FieldTextInput("location name"), "location_name");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
