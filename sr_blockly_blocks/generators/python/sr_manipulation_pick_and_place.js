@@ -6,6 +6,8 @@ Blockly.Python['sr_manipulation_pick'] = function(block) {
 };
 
 Blockly.Python['sr_manipulation_place'] = function(block) {
-    var code = Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/sr_manipulation_place.py");
+    var text_location_name = block.getFieldValue('location_name');
+    var code = 'text_location_name = "' + text_location_name.toString() + '"\n';
+    code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/sr_manipulation_place.py");
     return code;
 };
