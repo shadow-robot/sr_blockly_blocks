@@ -33,6 +33,13 @@
 #PyCharm IDE
 .idea
 
+#Temp files
+*\#$
+*~$
+*~
+\#*\#
+.\#*
+
 #QtCreator files
 CMakeLists.txt.user
 
