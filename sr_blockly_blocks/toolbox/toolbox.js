@@ -24,10 +24,15 @@ Blockly.appendToToolbox(`
         </category>
         <category name="ROS">
           <block type="sleep"></block>
+	  <block type="tf_listener"></block>
         </category>
         <category name="Warehouse Database">
           <block type="warehouse_save"></block>
           <block type="launch_warehouse"></block>
         </category>
+	<category name="Manipulation">
+	  <block type="sr_manipulation_pick"></block>
+	  <block type="sr_manipulation_place"></block>
+	</category>
     </category>
 `);
