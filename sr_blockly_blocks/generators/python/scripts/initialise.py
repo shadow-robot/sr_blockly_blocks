@@ -9,6 +9,8 @@ elif dropdown_commander == 'hand_commander':
     hand_commander = SrHandCommander(name=side + "_hand")
 elif dropdown_commander == 'robot_commander':
     robot_commander = SrRobotCommander(name=side + "_arm_and_hand")
+elif dropdown_commander == 'hand_h_and_arm':
+    robot_commander = SrRobotCommander ("arm_and_hand", prefix="ra_")
 else:
     arm_commander = SrArmCommander(set_ground=False)
     hand_commander = SrHandCommander(name=side + "_hand")
