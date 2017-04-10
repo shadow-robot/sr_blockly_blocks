@@ -5,20 +5,20 @@ import actionlib
 
 
 # goal message and the result message.
-import recognizer.msg
+import sr_recognizer.msg
 
 
 def recognizer_client():
     # Creates the SimpleActionClient, passing the type of the action
     # to the constructor.
-    client = actionlib.SimpleActionClient('recognizer', recognizer.msg.RecognizerAction)
+    client = actionlib.SimpleActionClient('recognizer', sr_recognizer.msg.RecognizerAction)
 
     # Waits until the action server has started up and started
     # listening for goals.
     client.wait_for_server()
 
     # Creates a goal to send to the action server.
-    goal = recognizer.msg.RecognizerGoal(start=1)
+    goal = sr_recognizer.msg.RecognizerGoal(start=1)
 
     # Sends the goal to the action server.
     client.send_goal(goal)
