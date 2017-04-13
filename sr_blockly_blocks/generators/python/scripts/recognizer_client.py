@@ -27,7 +27,7 @@ def recognizer_client():
     client.wait_for_result()
 
     # Prints out the result of executing the action
-    return client.get_result() 
+    return client.get_result()
 
 
 if __name__ == '__main__':
@@ -42,9 +42,8 @@ if __name__ == '__main__':
         for i in xrange(0, len(result.ids)):
             result_names.append(result.ids[i].data)
 
-        #print("Result:", result_names)
-        #print("Transforms:\n", result.transforms)
-
+        #  print("Result:", result_names)
+        #  print("Transforms:\n", result.transforms)
 
     except rospy.ROSInterruptException:
-        print("program interrupted before completion")  # , file=sys.stderr)
+        print("program interrupted before completion")  #  , file=sys.stderr)
