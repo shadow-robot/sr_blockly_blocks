@@ -13,7 +13,6 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>sr_blocks_common</buildtool_depend>
   <build_depend>rospy</build_depend>
-  <build_depend>sr_recognizer</build_depend>
   <run_depend>rospy</run_depend>
   <run_depend>sensor_msgs</run_depend>
   <run_depend>moveit_msgs</run_depend>
