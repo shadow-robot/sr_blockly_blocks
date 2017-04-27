@@ -25,4 +25,4 @@ trunks:
         tag: recognizer
 
 branch:
-parent: kinetic-devel
+    parent: kinetic-devel
