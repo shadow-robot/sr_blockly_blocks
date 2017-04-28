@@ -42,8 +42,5 @@ if __name__ == '__main__':
         for i in xrange(0, len(result.ids)):
             result_names.append(result.ids[i].data)
 
-        #  print("Result:", result_names)
-        #  print("Transforms:\n", result.transforms)
-
     except rospy.ROSInterruptException:
         print("program interrupted before completion")
