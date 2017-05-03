@@ -1,4 +1,3 @@
-
 import ast
 
 if joint_goal == 'joint_angles':
