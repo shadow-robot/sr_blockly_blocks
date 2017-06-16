@@ -1,4 +1,4 @@
-Blockly.Blocks['grasp'] = {
+Blockly.Blocks['grasp_new'] = {
   init: function() {
     this.appendValueInput("grasp_id")
         .setCheck("String")
