@@ -30,5 +30,11 @@ Blockly.appendToToolbox(`
           <block type="warehouse_save"></block>
           <block type="launch_warehouse"></block>
         </category>
+        <category name="Demo">
+          <block type="move_to_object_goal"></block>
+          <block type="grasp_new"></block>
+          <block type="move_to_object"></block>
+          <block type="recognizer"></block>
+        </category>
     </category>
 `);
