@@ -6,6 +6,7 @@ Blockly.Python['recognizer'] = function(block) {
 
 Blockly.Python['move_to_object_goal'] = function(block) {
   var dropdown_move_drop_down = block.getFieldValue('move_drop_down');
+  var value_object = Blockly.Python.valueToCode(block, 'object', Blockly.Python.ORDER_ATOMIC);
   // TODO: Assemble Python into code variable.
   var code = '...\n';
   return code;
