@@ -1,12 +1,12 @@
 Blockly.Blocks['move_to_object_goal'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Move ")
-        .appendField(new Blockly.FieldDropdown([["above object","object"], ["to goal","goal"]]), "move_drop_down");
-    this.appendValueInput("object")
+        .appendField("Move arm to")
+        .appendField(new Blockly.FieldDropdown([["pre-grasp position","pre_grasp"], ["grasp position","grasp"], ["goal","goal"]]), "Move");
+    this.appendValueInput("NAME")
         .setCheck("String")
-        .appendField("which object to grasp");
-    this.setPreviousStatement(true, "Array");
+        .appendField("Which object to grasp");
+    this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
     this.setTooltip('');
