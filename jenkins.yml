@@ -11,3 +11,18 @@ settings:
     modules:
       - check_cache
       - code_coverage
+
+trunks:
+  - name: indigo-devel
+  - name: kinetic-devel
+    settings:
+      ubuntu:
+        version: xenial
+      ros:
+        release: kinetic
+      docker:
+        image: shadowrobot/dexterous-hand
+        tag: recognizer
+
+branch:
+    parent: kinetic-devel

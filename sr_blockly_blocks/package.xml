@@ -17,5 +17,6 @@
   <run_depend>sensor_msgs</run_depend>
   <run_depend>moveit_msgs</run_depend>
   <run_depend>sr_utilities</run_depend>
+  <run_depend>sr_recognizer</run_depend>
 
 </package>

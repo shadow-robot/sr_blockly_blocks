@@ -1,4 +1,3 @@
-
 import rospy
 import threading
 from std_msgs.msg import String
@@ -43,7 +42,3 @@ while not found and not rospy.is_shutdown():
         found = True
 
 recognized_words = list(recognized_words_set)
-
-
-
-

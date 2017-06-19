@@ -1,4 +1,3 @@
-
 trajectory = [
     {
         'name': dropdown_named_pose,
@@ -9,4 +8,3 @@ trajectory = [
 
 # Run trajectory via moveit
 arm_commander.run_named_trajectory(trajectory)
-

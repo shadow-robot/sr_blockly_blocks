@@ -1,4 +1,3 @@
-
 trajectory = [
     {
         'name': dropdown_grasp,
@@ -9,4 +8,3 @@ trajectory = [
 
 # Run trajectory via moveit
 hand_commander.run_named_trajectory(trajectory)
-

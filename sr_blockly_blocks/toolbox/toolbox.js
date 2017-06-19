@@ -36,5 +36,8 @@ Blockly.appendToToolbox(`
           <block type="move_to_object"></block>
           <block type="recognizer"></block>
         </category>
+    	<category name="Vision">
+          <block type="v_object_finder"></block>
+        </category>
     </category>
 `);
