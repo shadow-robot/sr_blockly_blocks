@@ -34,13 +34,16 @@ try:
     #     publish and subscribe over ROS.
     #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
     result = recognizer_client()
+    # print result
 
     result_names = list()
-    result_transform = dict()
+    result_transforms = dict()
 
     for i in xrange(0, len(result.ids)):
         result_names.append(result.ids[i].data)
-        result_transform[result.ids[i].data] = result.transforms[i].data
+        result_transforms[result.ids[i].data] = result.transforms[i]
+
+    print result_names
 
 except rospy.ROSInterruptException:
     print("program interrupted before completion")

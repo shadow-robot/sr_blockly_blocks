@@ -2,10 +2,14 @@
 rospy.sleep(2.0)
 
 current_pose = arm_commander.get_current_pose()
+print object_id
 object_transform = result_transforms[object_id]
 x = object_transform.translation.x
 y = object_transform.translation.y
 z = object_transform.translation.z
+height= 0.5
+pre_grasp_offset = 0.4
+grasp_offset = 0.3
 
 if dropdown_move is "pre-grasp position":
     z += height + pre_grasp_offset

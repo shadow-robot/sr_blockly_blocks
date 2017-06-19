@@ -9,8 +9,9 @@ Blockly.Python['move_to_object_goal'] = function(block) {
   var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
   var code = "";
   code += "dropdown_move = '" + dropdown_move.toString() + "'" + "\n";
-  code += "object = '" + value_name.toString() + "'" + "\n";
-  code += Blockly.readfile("/sr_blockly_blocks/generators/python/scripts/move_arm_to_goal.py")
+  // code += "object_id = '" + value_name.toString() + "'" + "\n";
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/move_arm_to_goal.py");
+  code += "\n";
 
   return code;
 };
