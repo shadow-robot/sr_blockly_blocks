@@ -7,8 +7,11 @@ Blockly.Python['recognizer'] = function(block) {
 Blockly.Python['move_to_object_goal'] = function(block) {
   var dropdown_move = block.getFieldValue('Move');
   var value_name = Blockly.Python.valueToCode(block, 'NAME', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
-  var code = '...\n';
+  var code = "";
+  code += "dropdown_move = '" + dropdown_move.toString() + "'" + "\n";
+  code += "object = '" + value_name.toString() + "'" + "\n";
+  code += Blockly.readfile("/sr_blockly_blocks/generators/python/scripts/move_arm_to_goal.py")
+
   return code;
 };
 

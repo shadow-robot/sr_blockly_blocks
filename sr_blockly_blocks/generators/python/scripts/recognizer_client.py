@@ -29,18 +29,18 @@ def recognizer_client():
     # Prints out the result of executing the action
     return client.get_result()
 
+try:
+    #     Initializes a rospy node so that the SimpleActionClient can
+    #     publish and subscribe over ROS.
+    #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
+    result = recognizer_client()
 
-if __name__ == '__main__':
-    try:
-        #     Initializes a rospy node so that the SimpleActionClient can
-        #     publish and subscribe over ROS.
-        #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
-        result = recognizer_client()
+    result_names = list()
+    result_transform = dict()
 
-        result_names = list()
+    for i in xrange(0, len(result.ids)):
+        result_names.append(result.ids[i].data)
+        result_transform[result.ids[i].data] = result.transforms[i].data
 
-        for i in xrange(0, len(result.ids)):
-            result_names.append(result.ids[i].data)
-
-    except rospy.ROSInterruptException:
-        print("program interrupted before completion")
+except rospy.ROSInterruptException:
+    print("program interrupted before completion")
