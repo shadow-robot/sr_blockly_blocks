@@ -28,8 +28,8 @@ Blockly.Python['grasp_new'] = function(block) {
   var dropdown_grasp_menu = block.getFieldValue('grasp_menu');
 
   var code = "";
-  code += "grasp_id = " + value_grasp_id.toString() + "\n";
-  code += "max_torque = '" + value_max_torque.toString() + "'" + "\n";
+  // code += "grasp_id = " + value_grasp_id.toString() + "\n";
+  // code += "max_torque = '" + value_max_torque.toString() + "'" + "\n";
   code += "grasp_state = '" + dropdown_grasp_menu.toString() + "'" + "\n";
 
   code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/grasp_rest_api.py");
