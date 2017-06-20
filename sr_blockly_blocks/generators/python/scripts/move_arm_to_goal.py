@@ -28,7 +28,7 @@ if grasp_id is not None and grasp_position is not None and grasp_orientation is 
     y = object_transform.translation.y + grasp_position[1]
     z = object_transform.translation.z + grasp_position[2]
 
-    pre_grasp_offset = 0.4
+    pre_grasp_offset = 0.2
 
     print dropdown_move
 
