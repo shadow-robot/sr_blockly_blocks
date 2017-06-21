@@ -38,11 +38,6 @@ if __name__ == '__main__':
         #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
         result = recognizer_client()
 
-        result_names = list()
-
-        for i in xrange(0, len(result.ids)):
-            result_names.append(result.ids[i].data)
-
         tf_br = tf2_ros.TransformBroadcaster()
         t_msg = geometry_msgs.msg.TransformStamped()
 
