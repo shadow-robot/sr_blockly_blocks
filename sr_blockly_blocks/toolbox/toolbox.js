@@ -31,9 +31,8 @@ Blockly.appendToToolbox(`
           <block type="launch_warehouse"></block>
         </category>
 	<category name="Vision">
-          <block type="v_object_finder"></block>
+          <block type="v_object_finder_v1"></block>
           <block type="v_object_finder_v2"></block>
-           <block type="v_object_finder_v3"></block>
         </category>
     </category>
 `);

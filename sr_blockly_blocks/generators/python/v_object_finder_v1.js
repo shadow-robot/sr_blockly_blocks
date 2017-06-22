@@ -4,7 +4,7 @@ Blockly.Python['v_object_finder_v1'] = function(block) {
  
   var code = "";
 
-  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/recognizer_client.py");
+  code += Blockly.readFile("/sr_blockly_blocks/generators/python/scripts/recognizer_client_v1.py");
   code += "\n";
   code += "        " + text_transforms + "= list()" + "\n";
   code += "        " + text_transforms + "= result.transforms" + "\n";
