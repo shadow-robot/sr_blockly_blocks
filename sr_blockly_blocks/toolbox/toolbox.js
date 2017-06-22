@@ -30,5 +30,9 @@ Blockly.appendToToolbox(`
           <block type="warehouse_save"></block>
           <block type="launch_warehouse"></block>
         </category>
+	<category name="Vision">
+          <block type="v_object_finder_v1"></block>
+          <block type="v_object_finder_v2"></block>
+        </category>
     </category>
 `);
