@@ -45,6 +45,3 @@ if __name__ == '__main__':
         #print("Result:", result_names)
         #print("Transforms:\n", result.transforms)
 
-
-    except rospy.ROSInterruptException:
-        print("program interrupted before completion")  # , file=sys.stderr)
