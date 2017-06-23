@@ -2,8 +2,8 @@ import urllib2
 import json
 
 port = "8080"
-#host = "0.0.0.0"
-host = "hand-H"
+host = "0.0.0.0"
+# host = "hand-H"
 address = "http://" + host + ":" + port
 
 print "grasp_rest_api"
