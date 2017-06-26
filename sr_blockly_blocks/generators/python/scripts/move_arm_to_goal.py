@@ -22,8 +22,8 @@ for n, grasp_map in enumerate(__mapping):
         grasp_orientation = grasp_map["grasp_orientation"]
 print grasp_position
 if grasp_id is not None and grasp_position is not None and grasp_orientation is not None:
-    object_transform.translation.x = 0.42
-    object_transform.translation.y = 0.88
+    object_transform.translation.x = object_transform.translation.x
+    object_transform.translation.y = object_transform.translation.y
     object_transform.translation.z = 1.0
 
     x = object_transform.translation.x + grasp_position[0]
