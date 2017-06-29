@@ -6,7 +6,7 @@ import tf2_ros
 import tf
 import geometry_msgs.msg
 
-PARENT_FRAME = "camera_depth_optical_frame"
+CAMERA_FRAME = "camera_depth_optical_frame"
 
 
 def recognizer_client():
@@ -41,14 +41,14 @@ class Transformations:
 
     def set_geometry_msgs(self):
         self.t_msg.header.stamp = rospy.Time.now()
-        self.t_msg.header.frame_id = PARENT_FRAME
+        self.t_msg.header.frame_id = CAMERA_FRAME
         self.t_msg.child_frame_id = name
         self.t_msg.transform.translation = transform.translation
         self.t_msg.transform.rotation = transform.rotation
         self.tf_br.sendTransform(self.t_msg)
 
     def set_world2camera(self):
-        world2camera = self.tfBuffer.lookup_transform("world", PARENT_FRAME, rospy.Time(0), rospy.Duration(3.0))
+        world2camera = self.tfBuffer.lookup_transform("world", CAMERA_FRAME, rospy.Time(0), rospy.Duration(3.0))
         world2camera_trans = [world2camera.transform.translation.x, world2camera.transform.translation.y,
                               world2camera.transform.translation.z]
         world2camera_rota = [world2camera.transform.rotation.x, world2camera.transform.rotation.y,
