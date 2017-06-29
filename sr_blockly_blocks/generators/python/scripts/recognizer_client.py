@@ -33,32 +33,26 @@ def recognizer_client():
     # Prints out the result of executing the action
     return client.get_result()
 
-try:
-    #     Initializes a rospy node so that the SimpleActionClient can
-    #     publish and subscribe over ROS.
-    #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
-    result = recognizer_client()
-    # print result
+while not rospy.is_shutdown():
+    try:
+        #     Initializes a rospy node so that the SimpleActionClient can
+        #     publish and subscribe over ROS.
+        #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
+        result = recognizer_client()
+        # print result
 
-    result_names = list()
-    result_transforms = dict()
-
-    for i in xrange(0, len(result.ids)):
-        result_names.append(result.ids[i].data)
-
-        # tf_br = tf2_ros.TransformBroadcaster()
+        # Publish tf frames
         tf_br = tf2_ros.TransformBroadcaster()
         t_msg = geometry_msgs.msg.TransformStamped()
 
         tfBuffer = tf2_ros.Buffer()
-        listener = tf2_ros.TransformListener(tfBuffer)
+        # listener = tf2_ros.TransformListener(tfBuffer)
+
+        parent_frame = "camera_depth_optical_frame"
 
         for i in xrange(0, len(result.ids)):
-
-            parent_frame = "camera_depth_optical_frame"
-
+            # if result.confidences[i] >= 0.6:
             name = str(result.ids[i].data)
-            print "************ object:", name
             transform = result.transforms[i]
 
             t_msg.header.stamp = rospy.Time.now()
@@ -66,39 +60,40 @@ try:
             t_msg.child_frame_id = name
 
             t_msg.transform.translation = transform.translation
-
             t_msg.transform.rotation = transform.rotation
 
             tf_br.sendTransform(t_msg)
 
-            world2camera = tfBuffer.lookup_transform("world", "camera_depth_optical_frame", rospy.Time(0), rospy.Duration(3.0))
-            print "world2camera", world2camera
 
-            world2camera_trans = [world2camera.transform.translation.x, world2camera.transform.translation.y, world2camera.transform.translation.z]
-            world2camera_rota = [world2camera.transform.rotation.x, world2camera.transform.rotation.y, world2camera.transform.rotation.z, world2camera.transform.rotation.w]
 
-            world2camera_trans_matrix = tf.transformations.translation_matrix(world2camera_trans)
-            world2camera_rota_matrix = tf.transformations.quaternion_matrix(world2camera_rota)
-            world2camera_transform = np.dot(world2camera_trans_matrix, world2camera_rota_matrix)
-
-            camera2object_trans = [transform.translation.x, transform.translation.y,
-                                   transform.translation.z]
-            camera2object_rota = [transform.rotation.x, transform.rotation.y,
-                                  transform.rotation.z, transform.rotation.w]
-
-            camera2object_trans_matrix = tf.transformations.translation_matrix(camera2object_trans)
-            camera2object_rota_matrix = tf.transformations.quaternion_matrix(camera2object_rota)
-            camera2object_transform = np.dot(camera2object_trans_matrix, camera2object_rota_matrix)
-
-            world2object = np.dot(world2camera_transform, camera2object_transform)
-
-            world2object_t = transform
-            world2object_t.translation.x = world2object[0, 3]
-            world2object_t.translation.y = world2object[1, 3]
-            world2object_t.translation.z = world2object[2, 3]
-
-            print "world2object", world2object
-            result_transforms[name] = world2object_t
+            # world2camera = tfBuffer.lookup_transform("world", "camera_depth_optical_frame", rospy.Time(0), rospy.Duration(3.0))
+            # print "world2camera", world2camera
+            #
+            # world2camera_trans = [world2camera.transform.translation.x, world2camera.transform.translation.y, world2camera.transform.translation.z]
+            # world2camera_rota = [world2camera.transform.rotation.x, world2camera.transform.rotation.y, world2camera.transform.rotation.z, world2camera.transform.rotation.w]
+            #
+            # world2camera_trans_matrix = tf.transformations.translation_matrix(world2camera_trans)
+            # world2camera_rota_matrix = tf.transformations.quaternion_matrix(world2camera_rota)
+            # world2camera_transform = np.dot(world2camera_trans_matrix, world2camera_rota_matrix)
+            #
+            # camera2object_trans = [transform.translation.x, transform.translation.y,
+            #                        transform.translation.z]
+            # camera2object_rota = [transform.rotation.x, transform.rotation.y,
+            #                       transform.rotation.z, transform.rotation.w]
+            #
+            # camera2object_trans_matrix = tf.transformations.translation_matrix(camera2object_trans)
+            # camera2object_rota_matrix = tf.transformations.quaternion_matrix(camera2object_rota)
+            # camera2object_transform = np.dot(camera2object_trans_matrix, camera2object_rota_matrix)
+            #
+            # world2object = np.dot(world2camera_transform, camera2object_transform)
+            #
+            # world2object_t = transform
+            # world2object_t.translation.x = world2object[0, 3]
+            # world2object_t.translation.y = world2object[1, 3]
+            # world2object_t.translation.z = world2object[2, 3]
+            #
+            # print "world2object", world2object
+            # result_transforms[name] = world2object_t
             # world2object = np.dot(world2camera, transform)
             # print world2object
 
@@ -118,11 +113,7 @@ try:
             # trans = tfBuffer.lookup_transform('ra_base_link', name, rospy.Time(0))  # , rospy.Duration(3.0)
             # # result.tranform_from_world[i] = trans
             # print trans
-            # # print result.tranform_from_world[i]
+            # print result.tranform_from_world[i]
 
-
-        print result
-
-
-except rospy.ROSInterruptException:
-    print("program interrupted before completion")
+    except rospy.ROSInterruptException:
+        print("program interrupted before completion")
