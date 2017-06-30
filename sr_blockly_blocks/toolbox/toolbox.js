@@ -24,20 +24,18 @@ Blockly.appendToToolbox(`
         </category>
         <category name="ROS">
           <block type="sleep"></block>
-	  <block type="tf_listener"></block>
+	      <block type="tf_listener"></block>
         </category>
         <category name="Warehouse Database">
           <block type="warehouse_save"></block>
           <block type="launch_warehouse"></block>
         </category>
-        <category name="Demo">
-          <block type="move_to_object_goal"></block>
-          <block type="grasp_new"></block>
-          <block type="move_to_object"></block>
-          <block type="recognizer"></block>
-        </category>
     	<category name="Vision">
           <block type="v_object_finder"></block>
+        </category>
+        <category name="SGS Pick and Place">
+          <block type="move_arm_pick_place"></block>
+          <block type="grasp_rest_api"></block>
         </category>
     </category>
 `);

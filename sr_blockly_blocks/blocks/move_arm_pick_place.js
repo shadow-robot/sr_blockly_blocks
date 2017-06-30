@@ -1,4 +1,4 @@
-Blockly.Blocks['move_to_object_goal'] = {
+Blockly.Blocks['move_arm_pick_place'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Move arm to")
