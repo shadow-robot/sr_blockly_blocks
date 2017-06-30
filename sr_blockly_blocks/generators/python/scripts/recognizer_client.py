@@ -5,12 +5,10 @@ import actionlib
 # goal message and the result message.
 import sr_recognizer.msg
 
-import numpy as np
-
 import rospy
 import tf2_ros
-import tf
 import geometry_msgs.msg
+
 
 def recognizer_client():
     # Creates the SimpleActionClient, passing the type of the action
