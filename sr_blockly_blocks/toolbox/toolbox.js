@@ -2,6 +2,7 @@ Blockly.appendToToolbox(`
     <category id="shadow" name="Shadow Robot" colour="120">
         <category name="Commander">
           <block type="initialise"></block>
+          <block type="initialise_arm"></block>
           <block type="teach_mode"></block>
         </category>
         <category name="Hand">
@@ -34,6 +35,7 @@ Blockly.appendToToolbox(`
           <block type="v_object_finder"></block>
         </category>
         <category name="SGS Pick and Place">
+          <block type="init_pick_place"></block>
           <block type="move_arm_pick_place"></block>
           <block type="grasp_rest_api"></block>
         </category>
