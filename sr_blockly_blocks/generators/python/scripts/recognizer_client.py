@@ -86,8 +86,7 @@ try:
     tt = Transformations()
     for i in xrange(0, len(result.ids)):
         result_names.append(result.ids[i].data)
-
-        for j in xrange(0, len(result.ids)):
+        if result.confidences[i] >= 0.5:
             name = str(result.ids[i].data)
 
             transform = result.transforms[i]

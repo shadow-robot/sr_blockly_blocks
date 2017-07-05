@@ -67,12 +67,11 @@ class InitPickAndPlace(object):
         self.release_pose.orientation.w = release_orientation[3]
         return self.release_pose
 
-
 # Fake result_transforms
-obj_tf = geometry_msgs.msg.Transform()
-obj_tf.translation.x = 0.42
-obj_tf.translation.y = 0.88
-result_transforms = {'pringles_red': obj_tf}
+# obj_tf = geometry_msgs.msg.Transform()
+# obj_tf.translation.x = 0.42
+# obj_tf.translation.y = 0.88
+# result_transforms = {'pringles_red': obj_tf}
 
 # Block starts
 init_pick_and_place = False
