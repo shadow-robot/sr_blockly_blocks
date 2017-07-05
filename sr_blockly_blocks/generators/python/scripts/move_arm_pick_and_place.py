@@ -25,7 +25,7 @@ if grasp_pose is not None and release_pose is not None and home_pose is not None
 
     arm_commander.plan_to_pose_target(arm_goal_pose)
     if arm_commander.check_plan_is_valid():
-      arm_commander.execute()
+        arm_commander.execute()
     else:
         rospy.logerr("Not valid plan found for specified arm pose")
         quit()

@@ -2,6 +2,7 @@ import geometry_msgs.msg
 
 TABLE_HEIGHT = 1.0
 
+
 class InitPickAndPlace(object):
     def __init__(self):
         self.grasp_id = None
@@ -67,6 +68,7 @@ class InitPickAndPlace(object):
         self.release_pose.orientation.w = release_orientation[3]
         return self.release_pose
 
+
 # Fake result_transforms
 # obj_tf = geometry_msgs.msg.Transform()
 # obj_tf.translation.x = 0.42
@@ -85,11 +87,10 @@ try:
     if pick_and_place.set_grasp_info(object_id):
         grasp_id, max_torque = pick_and_place.get_grasp_info()
         grasp_pose = pick_and_place.get_grasp_pose()
-        home_pose =  pick_and_place.get_home_pose(home_position, home_orientation)
+        home_pose = pick_and_place.get_home_pose(home_position, home_orientation)
         release_pose = pick_and_place.get_release_pose(release_position, release_orientation)
         init_pick_and_place = True
     else:
         rospy.logerr("Grasp information for object %s was not found" % object_id)
 except:
     init_pick_and_place = False
-
