@@ -19,14 +19,21 @@ class InitPickAndPlace(object):
 
     def set_grasp_info(self, object_id):
         objects_to_grasp = rospy.get_param("objects_to_grasp")
+        available_keys = ["object_id", "grasp_id", "grasp_position", "grasp_orientation", "max_torque"]
         for n, grasp_map in enumerate(objects_to_grasp):
             object_id_from_yaml = grasp_map["object_id"]
             if object_id_from_yaml == object_id:
-                self.grasp_id = grasp_map["grasp_id"]
-                self.grasp_position = grasp_map["grasp_position"]
-                self.grasp_orientation = grasp_map["grasp_orientation"]
-                self.max_torque = grasp_map["max_torque"]
-                return True
+                if all(key in grasp_map for key in available_keys):
+                    self.grasp_id = grasp_map["grasp_id"]
+                    self.grasp_position = grasp_map["grasp_position"]
+                    self.grasp_orientation = grasp_map["grasp_orientation"]
+                    self.max_torque = grasp_map["max_torque"]
+                    return True
+                else:
+                    rospy.logerr("objects_to_grasp should contain %s" % available_keys)
+                    return False
+
+        rospy.logerr("Grasp information for object %s was not found" % object_id)
         return False
 
     def get_grasp_info(self):
@@ -69,7 +76,7 @@ class InitPickAndPlace(object):
         return self.release_pose
 
 
-# Fake result_transforms
+# Fake result_transforms when recognizer is not available
 # obj_tf = geometry_msgs.msg.Transform()
 # obj_tf.translation.x = 0.42
 # obj_tf.translation.y = 0.88
@@ -79,7 +86,11 @@ class InitPickAndPlace(object):
 init_pick_and_place = False
 
 try:
-    object_tf = result_transforms[object_id]
+    if object_id in result_transforms:
+        object_tf = result_transforms[object_id]
+    else:
+        rospy.logerr("Object %s was not recognized" % object_id)
+        raise ValueError('Initialization error')
 
     pick_and_place = InitPickAndPlace()
     object_transform = pick_and_place.get_object_transform(object_tf)
@@ -91,6 +102,6 @@ try:
         release_pose = pick_and_place.get_release_pose(release_position, release_orientation)
         init_pick_and_place = True
     else:
-        rospy.logerr("Grasp information for object %s was not found" % object_id)
-except:
+        raise ValueError('Initialization error')
+except ValueError as err:
     init_pick_and_place = False
