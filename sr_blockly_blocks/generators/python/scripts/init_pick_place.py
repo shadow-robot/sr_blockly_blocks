@@ -1,4 +1,5 @@
 import geometry_msgs.msg
+import urllib2
 
 TABLE_HEIGHT = 1.0
 
@@ -85,12 +86,20 @@ class InitPickAndPlace(object):
 # Block starts
 init_pick_and_place = False
 
+check_received_joint_states = None
+PORT = "8080"
+HOST = "0.0.0.0"
+ADDRESS = "http://" + HOST + ":" + PORT
+API_METHOD = "/joint_positions"
+
 try:
     if object_id in result_transforms:
         object_tf = result_transforms[object_id]
     else:
         rospy.logerr("Object %s was not recognized" % object_id)
         raise ValueError('Initialization error')
+
+    check_received_joint_states = urllib2.urlopen(ADDRESS + API_METHOD).read()
 
     pick_and_place = InitPickAndPlace()
     object_transform = pick_and_place.get_object_transform(object_tf)
@@ -104,4 +113,10 @@ try:
     else:
         raise ValueError('Initialization error')
 except ValueError as err:
+    init_pick_and_place = False
+except urllib2.HTTPError, e:
+    rospy.logerr(e)
+    init_pick_and_place = False
+except urllib2.URLError, e:
+    rospy.logerr(e)
     init_pick_and_place = False
