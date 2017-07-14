@@ -1,0 +1,58 @@
+Blockly.Blocks['init_pick_place'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Initialize pick and place:")
+    this.appendDummyInput()
+        .appendField("object_id: ")
+        .appendField(new Blockly.FieldTextInput("pringles_red"), "object_id")
+    this.appendDummyInput()
+        .appendField("Pre-grasp offset: ")
+        .appendField("z")
+        .appendField(new Blockly.FieldTextInput("0.15"), "pre_grasp_offset_z")
+        .appendField("m")
+    this.appendDummyInput()
+        .appendField("Home position: ")
+        .appendField("x")
+        .appendField(new Blockly.FieldTextInput("0.6"), "home_x")
+        .appendField("m")
+        .appendField("y")
+        .appendField(new Blockly.FieldTextInput("0.5"), "home_y")
+        .appendField("m")
+        .appendField("z")
+        .appendField(new Blockly.FieldTextInput("1.5"), "home_z")
+        .appendField("m");
+    this.appendDummyInput()
+        .appendField("Home orientation: ")
+        .appendField("x")
+        .appendField(new Blockly.FieldTextInput("0.0"), "home_orientation_x")
+        .appendField("y")
+        .appendField(new Blockly.FieldTextInput("1.0"), "home_orientation_y")
+        .appendField("z")
+        .appendField(new Blockly.FieldTextInput("0.0"), "home_orientation_z")
+        .appendField("w")
+        .appendField(new Blockly.FieldTextInput("0.0"), "home_orientation_w")
+    this.appendDummyInput()
+        .appendField("Release position: ")
+        .appendField("x")
+        .appendField(new Blockly.FieldTextInput("-0.021"), "release_x")
+        .appendField("m")
+        .appendField("y")
+        .appendField(new Blockly.FieldTextInput("0.588"), "release_y")
+        .appendField("m")
+    this.appendDummyInput()
+        .appendField("Release orientation: ")
+        .appendField("x")
+        .appendField(new Blockly.FieldTextInput("0.204"), "release_orientation_x")
+        .appendField("y")
+        .appendField(new Blockly.FieldTextInput("0.979"), "release_orientation_y")
+        .appendField("z")
+        .appendField(new Blockly.FieldTextInput("-0.007"), "release_orientation_z")
+        .appendField("w")
+        .appendField(new Blockly.FieldTextInput("0.004"), "release_orientation_w")
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('http://www.shadowrobot.com/');
+  }
+};

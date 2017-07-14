@@ -1,11 +1,12 @@
-# from __future__ import print_function
-# import rospy
-
 import actionlib
-
-
-# goal message and the result message.
 import sr_recognizer.msg
+import numpy as np
+import rospy
+import tf2_ros
+import tf
+import geometry_msgs.msg
+
+CAMERA_FRAME = "camera_depth_optical_frame"
 
 
 def recognizer_client():
@@ -30,17 +31,67 @@ def recognizer_client():
     return client.get_result()
 
 
-if __name__ == '__main__':
-    try:
-        #     Initializes a rospy node so that the SimpleActionClient can
-        #     publish and subscribe over ROS.
-        #     rospy.init_node('recognizer_client_py') : not needed, because done by blockly
-        result = recognizer_client()
+class Transformations:
+    def __init__(self):
+        self.tf_br = tf2_ros.TransformBroadcaster()
+        self.t_msg = geometry_msgs.msg.TransformStamped()
 
-        result_names = list()
+        self.tfBuffer = tf2_ros.Buffer()
+        self.listener = tf2_ros.TransformListener(self.tfBuffer)
 
-        for i in xrange(0, len(result.ids)):
-            result_names.append(result.ids[i].data)
+    def set_geometry_msgs(self):
+        self.t_msg.header.stamp = rospy.Time.now()
+        self.t_msg.header.frame_id = CAMERA_FRAME
+        self.t_msg.child_frame_id = name
+        self.t_msg.transform.translation = transform.translation
+        self.t_msg.transform.rotation = transform.rotation
+        self.tf_br.sendTransform(self.t_msg)
 
-    except rospy.ROSInterruptException:
-        print("program interrupted before completion")
+    def set_world2camera(self):
+        world2camera = self.tfBuffer.lookup_transform("world", CAMERA_FRAME, rospy.Time(0), rospy.Duration(3.0))
+        world2camera_trans = [world2camera.transform.translation.x, world2camera.transform.translation.y,
+                              world2camera.transform.translation.z]
+        world2camera_rota = [world2camera.transform.rotation.x, world2camera.transform.rotation.y,
+                             world2camera.transform.rotation.z, world2camera.transform.rotation.w]
+        world2camera_trans_matrix = tf.transformations.translation_matrix(world2camera_trans)
+        world2camera_rota_matrix = tf.transformations.quaternion_matrix(world2camera_rota)
+        self.world2camera_transform = np.dot(world2camera_trans_matrix, world2camera_rota_matrix)
+
+    def set_camera2object(self):
+        camera2object_trans = [transform.translation.x, transform.translation.y,
+                               transform.translation.z]
+        camera2object_rota = [transform.rotation.x, transform.rotation.y,
+                              transform.rotation.z, transform.rotation.w]
+        camera2object_trans_matrix = tf.transformations.translation_matrix(camera2object_trans)
+        camera2object_rota_matrix = tf.transformations.quaternion_matrix(camera2object_rota)
+        self.camera2object_transform = np.dot(camera2object_trans_matrix, camera2object_rota_matrix)
+
+    def set_world2object(self):
+        self.set_world2camera()
+        self.set_camera2object()
+
+        world2object = np.dot(self.world2camera_transform, self.camera2object_transform)
+
+        world2object_t = transform
+        world2object_t.translation.x = world2object[0, 3]
+        world2object_t.translation.y = world2object[1, 3]
+        world2object_t.translation.z = world2object[2, 3]
+        return world2object_t
+
+try:
+    result = recognizer_client()
+    result_names = list()
+    result_transforms = dict()
+
+    tt = Transformations()
+    for i in xrange(0, len(result.ids)):
+        result_names.append(result.ids[i].data)
+        if result.confidences[i] >= 0.5:
+            name = str(result.ids[i].data)
+
+            transform = result.transforms[i]
+            tt.set_geometry_msgs()
+            result_transforms[name] = tt.set_world2object()
+
+except rospy.ROSInterruptException:
+    print("program interrupted before completion")
