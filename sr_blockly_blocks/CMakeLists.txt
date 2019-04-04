@@ -12,8 +12,8 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
-set(sr_blocks_common_EXTRAS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-include(${sr_blocks_common_EXTRAS_DIR}/blockly.cmake)
+
+include(${sr_blocks_common}/cmake/blockly.cmake)
 
 generate_blockly_js()
 
