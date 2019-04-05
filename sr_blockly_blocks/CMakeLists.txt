@@ -12,6 +12,9 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
+include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/cat.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/blockly.cmake)
+
 generate_blockly_js()
 
 install(FILES ${BLOCKS_UNCOMPRESSED_JS_FILE} DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
