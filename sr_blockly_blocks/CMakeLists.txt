@@ -12,6 +12,7 @@ catkin_package(
 #  DEPENDS system_lib
 )
 
+include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/cat.cmake)
 include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/blockly.cmake)
 
 generate_blockly_js()
