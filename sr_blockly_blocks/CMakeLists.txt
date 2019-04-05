@@ -14,13 +14,8 @@ catkin_package(
    #DEPENDS sr_blocks_common
 )
 
-#include(${CMAKE_SOURCE_DIR}/sr_blocks_common/cmake/blockly.cmake)
-include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/blockly.cmake)
-message(" common blocks: " ${sr_blocks_common_DIR})
-message(" CMAKE_CURRENT_LIST_DIR: " ${CMAKE_CURRENT_LIST_DIR})
-message(" sr_blocks_common_LIST_DIR: " ${sr_blocks_common_LIST_DIR})
-message(" SR_BLOCKS_COMMON_LIST_DIR: " ${SR_BLOCKS_COMMON_LIST_DIR})
 
+include(${CMAKE_CURRENT_LIST_DIR}/../sr_blocks_common/cmake/blockly.cmake)
 
 generate_blockly_js()
 
