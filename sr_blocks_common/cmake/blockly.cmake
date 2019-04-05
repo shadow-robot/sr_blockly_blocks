@@ -10,7 +10,7 @@ function(generate_blockly_js)
   foreach(PACKAGE_JS_FILE ${PACKAGE_JS_FILES})
     if(NOT (${PACKAGE_JS_FILE} MATCHES "${BLOCKS_UNCOMPRESSED_JS_FILE}$"))
       stamp(${PACKAGE_JS_FILE})
-      cat(${PACKAGE_JS_FILE} ${TEMP_BLOCKS_UNCOMPRESSED_JS_FILE})
+      #cat(${PACKAGE_JS_FILE} ${TEMP_BLOCKS_UNCOMPRESSED_JS_FILE})
     endif()
   endforeach()
 

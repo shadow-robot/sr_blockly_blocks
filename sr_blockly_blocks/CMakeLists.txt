@@ -8,12 +8,13 @@ catkin_python_setup()
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ${PROJECT_NAME}
-#  CATKIN_DEPENDS moveit_core moveit_ros_planning sr_blocks_common moveit_msgs sensor_msgs
-#  DEPENDS system_lib
+   #CATKIN_DEPENDS moveit_core moveit_ros_planning sr_blocks_common moveit_msgs sensor_msgs
+   #CATKIN_DEPENDS sr_blocks_common
+   #DEPENDS system_lib sr_blocks_common
+   #DEPENDS sr_blocks_common
 )
 
-
-include(${sr_blocks_common}/cmake/blockly.cmake)
+include(${CMAKE_SOURCE_DIR}/../sr_blocks_common/cmake/blockly.cmake)
 
 generate_blockly_js()
 
